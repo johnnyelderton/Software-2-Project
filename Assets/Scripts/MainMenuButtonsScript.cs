@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class MainMenuButtonsScript : MonoBehaviour {
 	public void Start(){
 	}
@@ -9,6 +10,10 @@ public class MainMenuButtonsScript : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		Application.LoadLevel ("Terrain");
+		SceneManager.LoadScene ("Terrain");
+	}
+
+	public void Volume(Slider slider){
+		AudioListener.volume = slider.value;
 	}
 }

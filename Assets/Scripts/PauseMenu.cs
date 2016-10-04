@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
 	void Start(){
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void QuitGame(){
-		Application.Quit();
+		SceneManager.LoadScene ("Main Menu");
+		Time.timeScale = 1;
 	}
 }

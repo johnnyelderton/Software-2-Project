@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 public class MainMenuButtonsScript : MonoBehaviour {
+
 	public void Start(){
 	}
 

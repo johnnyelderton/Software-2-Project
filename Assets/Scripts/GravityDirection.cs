@@ -18,7 +18,7 @@ public class GravityDirection : MonoBehaviour {
         if(Input.GetKey (KeyCode.G))
         {
 
-            Physics.gravity = GetComponent<Camera>().transform.forward;
+            Physics.gravity = GetComponent<Camera>().transform.forward*4;
         }
     }
 }

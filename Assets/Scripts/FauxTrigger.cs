@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class FauxTrigger : MonoBehaviour {
-	GameObject Planet;
+	private FauxGravityAttractor faux;
 
 	// Use this for initialization
 	void Start () {
-		Planet.SetActive (false);
+        faux = GetComponent<FauxGravityAttractor>();
+        faux.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -16,12 +17,15 @@ public class FauxTrigger : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider coll){
 		if(coll.gameObject.tag == "Player")
-			Planet.SetActive (true);
+        {
+            faux.enabled = true;
+        }
+			
 	}
 
 	private void OnTriggerExit(){
-		Planet.SetActive (false);
-	}
+        faux.enabled = false;
+    }
 
 
 }

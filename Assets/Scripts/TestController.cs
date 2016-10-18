@@ -131,7 +131,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
             
-            //moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+            
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
                 m_Jump = true;
@@ -250,6 +250,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
                 m_RigidBody.velocity = velRotation * m_RigidBody.velocity;
             }
+            
         }
 
         /// sphere cast down just beyond the bottom of the capsule to see if the capsule is colliding round the bottom

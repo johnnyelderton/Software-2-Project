@@ -16,7 +16,7 @@ namespace Assets.SwimmingSystem.Scripts
 
         private CharacterController _characterController;
 
-        private Blur _blur;
+        public Blur _blur;
 
         private Color _fogColorWater;
 
@@ -68,6 +68,8 @@ namespace Assets.SwimmingSystem.Scripts
             _defFogColor = RenderSettings.fogColor;
             _defFogEnabled = RenderSettings.fog;
 
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
         }
 
         // Update is called once per frame

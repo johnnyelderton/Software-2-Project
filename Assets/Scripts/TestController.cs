@@ -72,7 +72,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public float groundCheckDistance = 0.01f; // distance for checking if the controller is grounded ( 0.01f seems to work best for this )
             public float stickToGroundHelperDistance = 0.5f; // stops the character
             public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
-            public bool airControl; // can the user control the direction that is being moved in the air
+            public bool airControl = true; // can the user control the direction that is being moved in the air
             [Tooltip("set it to 0.1 or more if you get stuck in wall")]
             public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
         }
@@ -88,8 +88,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
-        private Vector3 moveDir;
+        private FauxGravityBody fauxbody;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded, candoublejump;
+
+
 
 
         public Vector3 Velocity
@@ -125,6 +127,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init(transform, cam.transform);
+            fauxbody.enabled = false;
         }
 
 
@@ -173,15 +176,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					candoublejump = true;
                 }
 
-				if (m_Jumping && candoublejump) {
-					candoublejump = false;
-					m_RigidBody.velocity = new Vector3 (m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
-					m_RigidBody.AddForce (new Vector3 (0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
-				}
 
                 if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
                 {
-                   // m_RigidBody.Sleep();
+                   m_RigidBody.Sleep();
                 }
             }
             else
@@ -205,6 +203,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             return movementSettings.SlopeCurveModifier.Evaluate(angle);
         }
 
+        private void OnTriggerEnter(Collider coll)
+        {
+            if (coll.gameObject.tag == "FauxGravity")
+            {
+                
+                fauxbody.enabled = true;
+                GetComponent<Rigidbody>().useGravity = false;
+            }
+        }
+
+        private void OnTriggerExit()
+        {
+    
+            fauxbody.enabled = false;
+            GetComponent<Rigidbody>().useGravity = true;
+        }
 
         private void StickToGroundHelper()
         {
@@ -220,6 +234,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+        
 
         private Vector2 GetInput()
         {

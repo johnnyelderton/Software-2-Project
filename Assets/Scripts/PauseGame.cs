@@ -18,44 +18,28 @@ public class PauseGame : MonoBehaviour {
 	public void Update (){
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if(Time.timeScale == 0){
-				if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain")) {
-					Time.timeScale = 1;
-					pause.gameObject.SetActive (false);
-					FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-					myScript.enabled = true;
-					Cursor.visible = false;
-					Cursor.lockState = CursorLockMode.Locked;
-				}
-				else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
-					Time.timeScale = 1;
-					pause.gameObject.SetActive (false);
-					FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-					myScript.enabled = true;
+				Time.timeScale = 1;
+				pause.gameObject.SetActive (false);
+				FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
+				myScript.enabled = true;
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+				if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
 					Swim swimmer = fpc.GetComponent("Swim") as Swim;
 					swimmer.enabled = true;
-					Cursor.visible = false;
-					Cursor.lockState = CursorLockMode.Locked;
 					//Swim._blur.enabled = true;
 				}
 			}
 			else {
-				if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain")) {
-					Time.timeScale = 0;
-					pause.gameObject.SetActive (true);
-					FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-					myScript.enabled = false;
-					Cursor.visible = true;
-					Cursor.lockState = CursorLockMode.None;
-				}
-				else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
-					Time.timeScale = 0;
-					pause.gameObject.SetActive (true);
-					FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-					myScript.enabled = false;
+				Time.timeScale = 0;
+				pause.gameObject.SetActive (true);
+				FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
+				myScript.enabled = false;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+				if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
 					Swim swimmer = fpc.GetComponent("Swim") as Swim;
 					swimmer.enabled = false;
-					Cursor.visible = true;
-					Cursor.lockState = CursorLockMode.None;
 					//Swim._blur.enabled = false;
 				}
 			}

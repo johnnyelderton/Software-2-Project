@@ -4,20 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class cube_script : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-
-    void OnTriggerEnter()
+    IEnumerator OnTriggerEnter()
     {
         // Go to water temple
+        float fadeTime = GameObject.Find("ChangeLevel").GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene("Water Temple");
     }
 }

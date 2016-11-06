@@ -75,45 +75,35 @@ namespace Assets.SwimmingSystem.Scripts
         // Update is called once per frame
         void Update()
         {
-            // Set underwater rendering or default
-            if (IsUnderwater())
-            {
-                SetRenderDiving();
-            }
-            else
-            {
-                SetRenderDefault();
-            }
+			if (Time.timeScale == 1) {
+				// Set underwater rendering or default
+				if (IsUnderwater ()) {
+					SetRenderDiving ();
+				} else {
+					SetRenderDefault ();
+				}
 
-            // Handle swimming
+				// Handle swimming
 
-            // 1. If camera underwater we dive
-            if (_isInWater)
-            {
-                if (IsUnderwater())
-                {
-                    DoDiving();
-                }
-                else
-                {
-                    // we are grounded and not underwater, we might walk as well
-                    if (_characterController.isGrounded)
-                    {
-                        DoWalking();
-                    }
-                    else
-                    {
-                        // we are not grounded so we are swimming above the surface
-                        HandleUpDownSwimMovement();
+				// 1. If camera underwater we dive
+				if (_isInWater) {
+					if (IsUnderwater ()) {
+						DoDiving ();
+					} else {
+						// we are grounded and not underwater, we might walk as well
+						if (_characterController.isGrounded) {
+							DoWalking ();
+						} else {
+							// we are not grounded so we are swimming above the surface
+							HandleUpDownSwimMovement ();
 
-                    }
-                }
+						}
+					}
 
-            }
-            else
-            {
-                DoWalking();
-            }
+				} else {
+					DoWalking ();
+				}
+			}
         }
 
         // Check if we are underwater
@@ -197,7 +187,7 @@ namespace Assets.SwimmingSystem.Scripts
         {
             if (LayerMask.LayerToName(other.gameObject.layer) == "Water")
             {
-                // We enter the water... doesn't matter if we return from unserwater, we are still in the water
+                // We enter the water... doesn't matter if we return from underwater, we are still in the water
                 _isInWater = true;
 
                 Debug.Log("Water Trigger Enter : " + _isInWater);
@@ -208,7 +198,6 @@ namespace Assets.SwimmingSystem.Scripts
         {
             if (LayerMask.LayerToName(other.gameObject.layer) == "Water" && _isInWater)
             {
-
                 // we are leaving the water, or are we under the sureface?
                 _waterSurfacePosY = other.transform.position.y;
                 float fpsPosY = this.transform.position.y;
@@ -311,7 +300,6 @@ namespace Assets.SwimmingSystem.Scripts
         }
 
         #endregion
-
 
     }
 }

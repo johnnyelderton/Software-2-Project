@@ -6,30 +6,49 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Assets.SwimmingSystem.Scripts;
 using UnityStandardAssets.ImageEffects;
+
+// Script that pauses the scene and shows the pause menu.
 public class PauseGame : MonoBehaviour {
 
-	public GameObject pause;
-	public GameObject fpc;
+	public GameObject pause;    // pause menu
+	public GameObject fpc;      // firstPersonController
+	public GameObject grav;     // Gravity temple's main camera
+	public GameObject swimBlur; // Water temple's firstPersonCharacter
 
+	// Start the game by making sure time is not paused.
 	void Start(){
 		Time.timeScale = 1;
 	}
 
 	public void Update (){
+		Scene currentScene = SceneManager.GetActiveScene();
+		string sceneName = currentScene.name;
+
+		// If the user presses the esc key.
 		if (Input.GetKeyDown (KeyCode.Escape)) {
+			
+			// If the time is already paused(pause menu is shown) we want to unpause the game and hide pause menu.
 			if(Time.timeScale == 0){
 				Time.timeScale = 1;
 				pause.gameObject.SetActive (false);
 				FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
 				myScript.enabled = true;
 				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
-				if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
-					Swim swimmer = fpc.GetComponent("Swim") as Swim;
-					swimmer.enabled = true;
-					//Swim._blur.enabled = true;
+				if (sceneName == "Water Temple") {
+					Blur blur = swimBlur.GetComponent ("Blur") as Blur;
+					blur.enabled = true;
+				}
+				else if (sceneName == "Gravity Temp") {
+					fpc.SetActive (true);
+					HeadBob hb = grav.GetComponent ("HeadBob") as HeadBob;
+					hb.enabled = true;
+					GravityDirection gravity = grav.GetComponent ("GravityDirection") as GravityDirection;
+					gravity.enabled = true;
+					Cursor.visible = false;
 				}
 			}
+
+			// If the time is not paused(pause menu is hidden) we want to pause the game and show the pause menu.
 			else {
 				Time.timeScale = 0;
 				pause.gameObject.SetActive (true);
@@ -37,10 +56,17 @@ public class PauseGame : MonoBehaviour {
 				myScript.enabled = false;
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
-				if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Water Temple")){
-					Swim swimmer = fpc.GetComponent("Swim") as Swim;
-					swimmer.enabled = false;
-					//Swim._blur.enabled = false;
+				if (sceneName == "Water Temple") {
+					Blur blur = swimBlur.GetComponent ("Blur") as Blur;
+					blur.enabled = false;
+				}
+				else if (sceneName == "Gravity Temp") {
+					fpc.SetActive(false);
+					HeadBob hb = grav.GetComponent("HeadBob") as HeadBob;
+					hb.enabled = false;
+					GravityDirection gravity = grav.GetComponent("GravityDirection") as GravityDirection;
+					gravity.enabled = false;
+					Cursor.visible = true;
 				}
 			}
 		}

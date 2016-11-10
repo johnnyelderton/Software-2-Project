@@ -42,6 +42,8 @@ namespace Assets.SwimmingSystem.Scripts
         [Range(0.5f, 3.0f)]
         public float _upDownSpeed = 1.0f;
 
+		public GameObject fpc;      // firstPersonController
+
         // Use this for initialization
         void Start()
         {
@@ -75,7 +77,10 @@ namespace Assets.SwimmingSystem.Scripts
         // Update is called once per frame
         void Update()
         {
+			FirstPersonController fpScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
 			if (Time.timeScale == 1) {
+				fpScript.enabled = true;
+
 				// Set underwater rendering or default
 				if (IsUnderwater ()) {
 					SetRenderDiving ();
@@ -84,7 +89,6 @@ namespace Assets.SwimmingSystem.Scripts
 				}
 
 				// Handle swimming
-
 				// 1. If camera underwater we dive
 				if (_isInWater) {
 					if (IsUnderwater ()) {
@@ -103,6 +107,9 @@ namespace Assets.SwimmingSystem.Scripts
 				} else {
 					DoWalking ();
 				}
+			}
+			else {
+				fpScript.enabled = false;
 			}
         }
 

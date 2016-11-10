@@ -133,12 +133,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-            
-            
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
-            {
-                m_Jump = true;
-            }
+			if (Time.timeScale == 0) {
+				Cursor.visible = true;
+			}
+			else {
+				Cursor.visible = false;
+				if (CrossPlatformInputManager.GetButtonDown ("Jump") && !m_Jump) {
+					m_Jump = true;
+				}
+			}
         }
 
 

@@ -31,20 +31,12 @@ public class PauseGame : MonoBehaviour {
 			if(Time.timeScale == 0){
 				Time.timeScale = 1;
 				pause.gameObject.SetActive (false);
-				FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-				myScript.enabled = true;
+				FirstPersonController fpScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
+				fpScript.enabled = true;
 				Cursor.visible = false;
 				if (sceneName == "Water Temple") {
 					Blur blur = swimBlur.GetComponent ("Blur") as Blur;
 					blur.enabled = true;
-				}
-				else if (sceneName == "Gravity Temp") {
-					fpc.SetActive (true);
-					HeadBob hb = grav.GetComponent ("HeadBob") as HeadBob;
-					hb.enabled = true;
-					GravityDirection gravity = grav.GetComponent ("GravityDirection") as GravityDirection;
-					gravity.enabled = true;
-					Cursor.visible = false;
 				}
 			}
 
@@ -52,21 +44,13 @@ public class PauseGame : MonoBehaviour {
 			else {
 				Time.timeScale = 0;
 				pause.gameObject.SetActive (true);
-				FirstPersonController myScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
-				myScript.enabled = false;
+				FirstPersonController fpScript = fpc.GetComponent("FirstPersonController") as FirstPersonController;
+				fpScript.enabled = false;
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				if (sceneName == "Water Temple") {
 					Blur blur = swimBlur.GetComponent ("Blur") as Blur;
 					blur.enabled = false;
-				}
-				else if (sceneName == "Gravity Temp") {
-					fpc.SetActive(false);
-					HeadBob hb = grav.GetComponent("HeadBob") as HeadBob;
-					hb.enabled = false;
-					GravityDirection gravity = grav.GetComponent("GravityDirection") as GravityDirection;
-					gravity.enabled = false;
-					Cursor.visible = true;
 				}
 			}
 		}

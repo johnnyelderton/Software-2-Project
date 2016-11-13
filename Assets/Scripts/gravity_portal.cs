@@ -7,7 +7,7 @@ public class gravity_portal : MonoBehaviour
 
     IEnumerator OnTriggerEnter()
     {
-        // Go to gravity temple
+        // Go to water temple
         float fadeTime = GameObject.Find("ChangeLevel").GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene("Gravity Temp");

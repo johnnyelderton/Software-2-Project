@@ -2,14 +2,14 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class gravity_portal : MonoBehaviour
+public class stealth_portal : MonoBehaviour
 {
 
     IEnumerator OnTriggerEnter()
     {
-        // Go to gravity temple
+        // Go to stealth temple
         float fadeTime = GameObject.Find("ChangeLevel").GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        SceneManager.LoadScene("Gravity Temp");
+        SceneManager.LoadScene("Stealth Temple");
     }
 }

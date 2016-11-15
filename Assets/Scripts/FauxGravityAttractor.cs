@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class FauxGravityAttractor : MonoBehaviour {
-    public float gravity = -10;
+    public float gravity = -20;
     private bool PlayerTrigger = false;
 
     public void Attract(Transform body)
@@ -23,11 +23,13 @@ public class FauxGravityAttractor : MonoBehaviour {
         if (coll.gameObject.tag == "Player")
         {
             PlayerTrigger = true;
+            coll.attachedRigidbody.useGravity= false;
         }
     }
 
-    private void OnTriggerExit()
+    private void OnTriggerExit(Collider coll)
     {
         PlayerTrigger = false;
+        coll.attachedRigidbody.useGravity = true;
     }
 }

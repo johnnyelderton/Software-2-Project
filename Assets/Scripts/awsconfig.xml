@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>s
+<aws region="us-west-2"/>
+<logging 
+		logTo = "UnityLogger"
+		logResponse ="Always"
+		logMetrics = "true"
+		logMetricsFormat = "JSON"/>

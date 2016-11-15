@@ -44,7 +44,6 @@ namespace AssemblyCSharp
 				return _ddbClient; 
 			}
 		}
-
 	}
 }
 

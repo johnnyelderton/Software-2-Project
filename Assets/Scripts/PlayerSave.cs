@@ -5,40 +5,40 @@ using UnityEngine.UI;
 public class PlayerSave : MonoBehaviour {
 
 	// Use this for initialization
-	float xLocation;
-	float yLocation;
-	float zLocation;
-	string scene;
+	static float xLocation;
+	static float yLocation;
+	static float zLocation;
+	static string scene;
  
-	public float getXLoaction(){
+	static public float getXLoaction(){
 		return xLocation;
 	}
 
-	public float getYLoaction(){
+	static public float getYLoaction(){
 		return yLocation;
 	}
 
-	public float getZLoaction(){
+	static public float getZLoaction(){
 		return zLocation;
 	}
 
-	public string getScene(){
+	static public string getScene(){
 		return scene;
 	}
 
-	public void sendXLocation(float x){
+	static public void sendXLocation(float x){
 		xLocation = x;
 	}
 
-	public void sendYLocation(float y){
+	static public void sendYLocation(float y){
 		yLocation = y; 
 	}
 
-	public void sendZLocation(float z){
+	static public void sendZLocation(float z){
 		zLocation = z; 
 	}
 
-	public void sendScene(string s){
+	static public void sendScene(string s){
 		scene = s;
 	}
 }

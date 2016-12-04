@@ -10,8 +10,7 @@ public class Saving : MonoBehaviour{
 	public float xLocation;
 	public float yLocation;
 	public float zLocation;
-	public string scene; 
-	PlayerSave saveObject; 
+	public string scene;  
 
 	public void onSaveClick (){
 		xLocation = FPS.transform.position.x;   
@@ -19,10 +18,10 @@ public class Saving : MonoBehaviour{
 		zLocation = FPS.transform.position.z; 
 		scene = Application.loadedLevelName; 
 
-		saveObject.sendXLocation (xLocation);
-		saveObject.sendYLocation (yLocation);
-		saveObject.sendZLocation (zLocation);
-		saveObject.sendScene (scene); 
+		PlayerSave.sendXLocation (xLocation);
+		PlayerSave.sendYLocation (yLocation);
+		PlayerSave.sendZLocation (zLocation);
+		PlayerSave.sendScene (scene); 
 
 	}
 }

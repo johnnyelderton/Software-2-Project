@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
+public class Invetory : MonoBehaviour {
 
 	// Use this for initialization
 	public bool shipPart1;
@@ -10,5 +10,5 @@ public class Inventory : MonoBehaviour {
 	public bool shipPart4;
 
 	public int list;
-
+	 
 }

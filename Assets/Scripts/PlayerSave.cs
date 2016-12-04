@@ -9,36 +9,36 @@ public class PlayerSave : MonoBehaviour {
 	float yLocation;
 	float zLocation;
 	string scene;
-
-	float getXLoaction(){
+ 
+	public float getXLoaction(){
 		return xLocation;
 	}
 
-	float getYLoaction(){
+	public float getYLoaction(){
 		return yLocation;
 	}
 
-	float getZLoaction(){
+	public float getZLoaction(){
 		return zLocation;
 	}
 
-	string getScene(){
+	public string getScene(){
 		return scene;
 	}
 
-	void sendXLocation(float x){
+	public void sendXLocation(float x){
 		xLocation = x;
 	}
 
-	void sendYLocation(float y){
+	public void sendYLocation(float y){
 		yLocation = y; 
 	}
 
-	void sendZLocation(float z){
+	public void sendZLocation(float z){
 		zLocation = z; 
 	}
 
-	void sendScene(string s){
+	public void sendScene(string s){
 		scene = s;
 	}
 }

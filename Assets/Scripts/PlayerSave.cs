@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class PlayerSave : MonoBehaviour {
 
 	// Use this for initialization
-	static float xLocation;
-	static float yLocation;
-	static float zLocation;
-	static string scene;
+	static float xLocation;	static bool gravityPart;
+	static float yLocation;	static bool stealthPart;
+	static float zLocation;	static bool waterPart;
+	static string scene;	static bool lightPart; 
  
 	static public float getXLoaction(){
 		return xLocation;
@@ -40,5 +40,21 @@ public class PlayerSave : MonoBehaviour {
 
 	static public void sendScene(string s){
 		scene = s;
+	}
+
+	static public void sendLightPart(bool part){
+		lightPart = part; 
+	}
+
+	static public void sendWaterPart(bool part){
+		waterPart = part; 
+	}
+
+	static public void sendStealthPart(bool part){
+		stealthPart = part; 
+	}
+
+	static public void sendGravityPart(bool part){
+		gravityPart = part; 
 	}
 }

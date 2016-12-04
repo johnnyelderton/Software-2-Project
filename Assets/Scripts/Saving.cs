@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Scripts;  
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Saving : MonoBehaviour{
 
@@ -23,6 +24,15 @@ public class Saving : MonoBehaviour{
 		PlayerSave.sendZLocation (zLocation);
 		PlayerSave.sendScene (scene); 
 
+		// Event(); 
+
+		SceneManager.LoadScene("Main Menu");
+	}
+
+	IEnumerator Event(){
+		float fadeTime = GameObject.Find("ChangeLevel").GetComponent<Fading>().BeginFade(1);
+		yield return new WaitForSeconds(fadeTime);
+		SceneManager.LoadScene("Main Menu");
 	}
 }
 

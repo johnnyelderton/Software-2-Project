@@ -26,6 +26,22 @@ public class PlayerSave : MonoBehaviour {
 		return scene;
 	}
 
+	static public bool getGravityPart(){
+		return gravityPart;
+	}
+
+	static public bool getStealthPart(){
+		return stealthPart;
+	}
+
+	static public bool getWaterPart(){
+		return waterPart;
+	}
+
+	static public bool getLightPart(){
+		return lightPart;
+	}
+		
 	static public void sendXLocation(float x){
 		xLocation = x;
 	}

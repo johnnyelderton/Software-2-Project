@@ -5,16 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadingSave : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public Button load;
 	public GameObject FPS;
 	public static float xLocation;
@@ -29,6 +19,11 @@ public class LoadingSave : MonoBehaviour {
 		scene = PlayerSave.getScene (); 
 
 		SceneManager.LoadScene(scene); 
+
+		FPS = GameObject.Find ("FPSController").gameObject;
+		Vector3 temp = new Vector3 (xLocation, yLocation, zLocation);
+		FPS.transform.position = temp; 
+
 		//FPS.transform.position.x = xLocation;
 		//FPS.transform.position.y = xLocation;
 		//FPS.transform.position.z = zLocation;

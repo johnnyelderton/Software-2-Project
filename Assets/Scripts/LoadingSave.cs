@@ -11,6 +11,7 @@ public class LoadingSave : MonoBehaviour {
 	public static float yLocation;
 	public static float zLocation;
 	public static string scene; 
+	//public LoadPlayer example; 
 
 	public void onClickLoad(){
 		xLocation = PlayerSave.getXLoaction ();
@@ -20,13 +21,13 @@ public class LoadingSave : MonoBehaviour {
 
 		SceneManager.LoadScene(scene); 
 
-		FPS = GameObject.Find ("FPSController").gameObject;
-		Vector3 temp = new Vector3 (xLocation, yLocation, zLocation);
-		FPS.transform.position = temp; 
+		LoadPlayer.changePosition (xLocation, yLocation, zLocation, scene); 
 
-		//FPS.transform.position.x = xLocation;
-		//FPS.transform.position.y = xLocation;
-		//FPS.transform.position.z = zLocation;
+		//print (GameObject.Find ("FPSController"));
+		//example = GameObject.Find ("FPSController").GetComponents<LoadPlayer>();
+		 
+		//Vector3 temp = new Vector3 (xLocation, yLocation, zLocation);
+		//FPS.transform.position = temp; 
 
 	}
 }

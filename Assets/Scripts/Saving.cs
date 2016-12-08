@@ -16,8 +16,8 @@ public class Saving : MonoBehaviour{
 	public void onSaveClick (){
 		xLocation = FPS.transform.position.x;   
 		yLocation = FPS.transform.position.y;
-		zLocation = FPS.transform.position.z; 
-		scene = Application.loadedLevelName; 
+		zLocation = FPS.transform.position.z;  
+		scene = SceneManager.GetActiveScene ().name; 
 
 		PlayerSave.sendXLocation (xLocation);
 		PlayerSave.sendYLocation (yLocation);

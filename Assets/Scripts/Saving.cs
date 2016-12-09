@@ -23,6 +23,7 @@ public class Saving : MonoBehaviour{
 		PlayerSave.sendYLocation (yLocation);
 		PlayerSave.sendZLocation (zLocation);
 		PlayerSave.sendScene (scene); 
+		PlayerSave.sendHasSaved (true); 
 
 		// Event(); 
 

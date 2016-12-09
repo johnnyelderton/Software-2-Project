@@ -9,6 +9,7 @@ public class PlayerSave : MonoBehaviour {
 	static float yLocation;	static bool stealthPart;
 	static float zLocation;	static bool waterPart;
 	static string scene;	static bool lightPart; 
+	static bool hasSaved = false; 
  
 	static public float getXLocation(){
 		return xLocation;
@@ -41,6 +42,10 @@ public class PlayerSave : MonoBehaviour {
 	static public bool getLightPart(){
 		return lightPart;
 	}
+
+	static public bool getHasSaved(){
+		return hasSaved;
+	}
 		
 	static public void sendXLocation(float x){
 		xLocation = x;
@@ -72,5 +77,9 @@ public class PlayerSave : MonoBehaviour {
 
 	static public void sendGravityPart(bool part){
 		gravityPart = part; 
+	}
+
+	static public void sendHasSaved(bool check){
+		hasSaved = check;
 	}
 }

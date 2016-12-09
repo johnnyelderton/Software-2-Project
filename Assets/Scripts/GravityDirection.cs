@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class GravityDirection : MonoBehaviour {
+	private Camera cam;
 
 	// Use this for initialization
 	void Start () {
-	
+		cam = GetComponent<Camera> ();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,8 @@ public class GravityDirection : MonoBehaviour {
         if(Input.GetKey (KeyCode.G))
         {
 
-            Physics.gravity = GetComponent<Camera>().transform.forward*4;
+            Physics.gravity = cam.transform.forward*4;
+			transform.up = -Physics.gravity;
         }
     }
 }

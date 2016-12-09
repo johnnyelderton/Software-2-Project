@@ -12,13 +12,14 @@ public class GravTrigger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 	
 	}
 
 	private void OnTriggerEnter(Collider coll)
 	{
 		
-		if (coll.gameObject.tag == "GravTrig")
+		if (coll.gameObject.tag == "GravTrig" || coll.gameObject.tag == "MazeWall")
 		{
 			//Changes player position to GameObject
 			grav.enabled = true;
@@ -27,6 +28,7 @@ public class GravTrigger : MonoBehaviour {
 
 	private void OnTriggerExit()
 	{
+		
 		grav.enabled = false;
 		Physics.gravity = new Vector3(0, -9.8F, 0);
 	}

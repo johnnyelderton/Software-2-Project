@@ -17,7 +17,7 @@ public class PlayerSave : MonoBehaviour {
 	static bool lightPart;	static bool waterPart;
 	static bool stealthPart;	static bool gravityPart;
 
-	static bool hasSaved = false; 
+	static bool hasSaved; 
  
 	static public float getXLocation(){
 		return xLocation;

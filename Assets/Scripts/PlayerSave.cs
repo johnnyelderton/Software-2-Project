@@ -10,15 +10,15 @@ public class PlayerSave : MonoBehaviour {
 	static float zLocation;	static bool waterPart;
 	static string scene;	static bool lightPart; 
  
-	static public float getXLoaction(){
+	static public float getXLocation(){
 		return xLocation;
 	}
 
-	static public float getYLoaction(){
+	static public float getYLocation(){
 		return yLocation;
 	}
 
-	static public float getZLoaction(){
+	static public float getZLocation(){
 		return zLocation;
 	}
 

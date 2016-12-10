@@ -15,21 +15,17 @@ public class GravTrigger : MonoBehaviour {
 		
 	
 	}
-
-	private void OnTriggerEnter(Collider coll)
-	{
 		
-		if (coll.gameObject.tag == "GravTrig" || coll.gameObject.tag == "MazeWall")
-		{
-			//Changes player position to GameObject
-			grav.enabled = true;
+
+	private void OnTriggerExit(Collider coll)
+	{
+		if (coll.gameObject.tag == "GravTrig") {
+			if (grav.enabled == false) {
+				grav.enabled = true;
+			} else if (grav.enabled == true) {
+				grav.enabled = false;
+			}
+			Physics.gravity = new Vector3 (0, -9.8F, 0);
 		}
-	}
-
-	private void OnTriggerExit()
-	{
-		
-		grav.enabled = false;
-		Physics.gravity = new Vector3(0, -9.8F, 0);
 	}
 }

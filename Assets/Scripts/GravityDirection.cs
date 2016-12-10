@@ -20,7 +20,6 @@ public class GravityDirection : MonoBehaviour {
         {
 
             Physics.gravity = cam.transform.forward*4;
-			transform.up = -Physics.gravity;
         }
     }
 }

@@ -20,13 +20,12 @@ public class GravTrigger : MonoBehaviour {
 
 	private void OnTriggerExit(Collider coll)
 	{
-		if (coll.gameObject.CompareTag("GravTrig")) {
 			if (grav.enabled == false) {
 				grav.enabled = true;
 			} else if (grav.enabled == true) {
 				grav.enabled = false;
 			}
 			Physics.gravity = new Vector3 (0, -9.8F, 0);
-		}
+
 	}
 }

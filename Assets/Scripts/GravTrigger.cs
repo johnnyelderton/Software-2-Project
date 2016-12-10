@@ -4,6 +4,7 @@ using System.Collections;
 public class GravTrigger : MonoBehaviour {
 	private GravityDirection grav;
 
+
 	// Use this for initialization
 	void Start () {
 		grav = GetComponent<GravityDirection>();
@@ -19,7 +20,7 @@ public class GravTrigger : MonoBehaviour {
 
 	private void OnTriggerExit(Collider coll)
 	{
-		if (coll.gameObject.tag == "GravTrig") {
+		if (coll.gameObject.CompareTag("GravTrig")) {
 			if (grav.enabled == false) {
 				grav.enabled = true;
 			} else if (grav.enabled == true) {

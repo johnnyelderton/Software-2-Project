@@ -16,6 +16,7 @@ public class LoadInventory : MonoBehaviour {
 	public GameObject partStealth;
 	public GameObject partLight;
 	public GameObject partGravity;
+
 	public GameObject menu;
 
 	void Start () {
@@ -54,8 +55,6 @@ public class LoadInventory : MonoBehaviour {
 			}
 		}
 
-
 	}
-
-
+		
 }

@@ -11,7 +11,6 @@ public class LoadingSave : MonoBehaviour {
 	public void onClickLoad(){ 
 		scene = PlayerSave.getScene (); 
 		SceneManager.LoadScene(scene); 
-		LoadPlayer.changePosition(); 
-
+		PlayerSave.sendHasSaved (true); 
 	}
 }

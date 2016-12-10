@@ -133,7 +133,7 @@ namespace Assets.SwimmingSystem.Scripts
         // Let's dive
         private void DoDiving()
         {
-            WalkSpeed = 1.0f;
+            WalkSpeed = 2.5f;
             RunSpeed = 2.0f;
             JumpSpeed = 0.0f;
 

@@ -43,6 +43,7 @@ public class InventoryTrigger : MonoBehaviour {
 			if (temp == false) {
 				PlayerSave.sendGravityPart (autonomicRT);
 			}
+			print (PlayerSave.getGravityPart ());
 		} 
 
 		else if (scene == "Stealth Temple") {
@@ -51,6 +52,7 @@ public class InventoryTrigger : MonoBehaviour {
 			if (temp == false) {
 				PlayerSave.sendStealthPart (warpCore);
 			}
+			print (PlayerSave.getStealthPart ());
 		} 
 
 		else if (scene == "Light Temple") {
@@ -59,6 +61,7 @@ public class InventoryTrigger : MonoBehaviour {
 			if (temp == false) {
 				PlayerSave.sendLightPart (booster);
 			}
+			print (PlayerSave.getLightPart ()); 
 		} 
 
 		else {
